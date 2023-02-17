@@ -6,3 +6,14 @@ services:
       context: .
     ports:
       - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://db:3306/gaemanda?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    depends_on:
+      - db
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
