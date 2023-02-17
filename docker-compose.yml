@@ -8,6 +8,8 @@ services:
       - "8080:8080"
     environment:
       DB_URL: jdbc:mysql://db:3306/gaemanda?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+      DB_USERNAME: root
+      DB_PASSWORD: root
     depends_on:
       - db
   db:
