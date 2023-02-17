@@ -27,7 +27,10 @@ services:
       MYSQL_DATABASE: test
       MYSQL_USER: test
       MYSQL_PASSWORD: test
+    volumes:
+      - db_data:/var/lib/mysql
 
 volumes:
   data:
   letsencrypt:
+  db_data:
