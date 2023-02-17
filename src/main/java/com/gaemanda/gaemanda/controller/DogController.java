@@ -2,14 +2,10 @@ package com.gaemanda.gaemanda.controller;
 
 
 import com.gaemanda.gaemanda.Domain.DogDto;
-import com.gaemanda.gaemanda.Domain.DogLike;
 import com.gaemanda.gaemanda.Domain.DogLikeDto;
 import com.gaemanda.gaemanda.service.DogLikeService;
 import com.gaemanda.gaemanda.service.DogService;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/dog")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class DogController {
 
     private final DogService dogService;
@@ -31,18 +28,16 @@ public class DogController {
         return dogService.signup(signupRequest);
     }
 
+//    @GetMapping("/")
+//    public List<DogDto.Info> getDogList() {
+//
+//        return dogService.getDogList();
+//    }
+
     @GetMapping("/")
-    public List<DogDto.Info> getDogList() {
-        return dogService.getDogList();
+    public DogDto.Info getDog(@RequestHeader("Id") Object token) {
+        return dogService.getDogByToken((String) token);
     }
-
-    @GetMapping("/{id}")
-    public DogDto.Info getDog(@PathVariable Integer id) {
-        return dogService.getDog(id);
-    }
-
-
-
 
     @PostMapping("/like")
     public DogLikeDto.putResponse putDogLike(@RequestBody Object targetDogId, @RequestHeader("id") Object token) {
@@ -68,4 +63,3 @@ public class DogController {
         return Integer.parseInt(tmp);
     }
 }
-

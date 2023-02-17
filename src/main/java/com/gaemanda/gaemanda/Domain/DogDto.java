@@ -108,6 +108,8 @@ public class DogDto {
         private LocalDateTime createdDate;
         private Integer id;
         private String token;
+        private String dogMbti;
+        private String dogMbtiTitle;
+        private String dogMbtiDescription;
     }
-
 }
