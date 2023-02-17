@@ -70,6 +70,7 @@ public class DogDto {
     @Builder
     @AllArgsConstructor
     public static class Info {
+        private Integer id;
         private String name;
         private String address;
         private LocalDate birth;

@@ -33,6 +33,7 @@ public class DogService {
                     .gender(dog.getGender())
                     .age(dog.getAge())
                     .weight(dog.getWeight())
+                            .id(dog.getId())
                     .height(dog.getHeight()).build());
         }
         return infoList;
@@ -67,6 +68,7 @@ public class DogService {
                 .age(dog.getAge())
                 .weight(dog.getWeight())
                 .height(dog.getHeight())
+                .id(id)
                 .build();
     }
     public DogDto.Info getDogByToken(String token) {
