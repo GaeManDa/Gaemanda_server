@@ -9,6 +9,9 @@ RUN mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*-SNAPSHO
 
 
 FROM eclipse-temurin:17-jdk-alpine
+
+EXPOSE 8080
+
 VOLUME /tmp
 ARG DEPENDENCY=/workspace/app/build/dependency
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
