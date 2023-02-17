@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/dog")
 @RequiredArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class DogController {
 
     private final DogService dogService;
