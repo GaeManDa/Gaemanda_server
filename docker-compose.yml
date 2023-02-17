@@ -1,11 +1,19 @@
 version: "3"
 
 services:
+  proxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - data:/data
+      - letsencrypt:/etc/letsencrypt
   app:
     build:
       context: .
-    ports:
-      - "80:8080"
     environment:
       DB_URL: jdbc:mysql://db:3306/gaemanda?useSSL=false&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true&useUnicode=true&serverTimezone=Asia/Seoul
       DB_USERNAME: root
@@ -19,3 +27,7 @@ services:
       MYSQL_DATABASE: test
       MYSQL_USER: test
       MYSQL_PASSWORD: test
+
+volumes:
+  data:
+  letsencrypt:
