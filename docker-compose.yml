@@ -18,6 +18,8 @@ services:
       DB_URL: jdbc:mysql://db:3306/gaemanda?useSSL=false&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true&useUnicode=true&serverTimezone=Asia/Seoul
       DB_USERNAME: root
       DB_PASSWORD: root
+    ports:
+      - '3306:3306'
     depends_on:
       - db
   db:
