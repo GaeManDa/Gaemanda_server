@@ -5,6 +5,7 @@ import com.gaemanda.gaemanda.Domain.DogDto;
 import com.gaemanda.gaemanda.Domain.DogLikeDto;
 import com.gaemanda.gaemanda.service.DogLikeService;
 import com.gaemanda.gaemanda.service.DogService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,13 +31,22 @@ public class DogController {
 
 //    @GetMapping("/")
 //    public List<DogDto.Info> getDogList() {
-//
 //        return dogService.getDogList();
 //    }
 
-    @GetMapping("/")
-    public DogDto.Info getDog(@RequestHeader("Id") Object token) {
-        return dogService.getDogByToken((String) token);
+//    @GetMapping("/")
+//    public DogDto.Info getDog(@RequestHeader("Id") Object token) {
+//        return dogService.getDogByToken((String) token);
+//    }
+
+    @GetMapping("/{id}")
+    public DogDto.Info getDog(@PathVariable Integer id) {
+        return dogService.getDog(id);
+    }
+
+    @GetMapping
+    public List<DogDto.Info> getAllDogs() {
+        return dogService.getDogList();
     }
 
     @PostMapping("/like")
